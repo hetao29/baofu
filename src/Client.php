@@ -1,0 +1,29 @@
+<?php
+
+namespace Baofu;
+
+class Client
+{
+    /**
+     * @param string $url
+     * @param array $params
+     * @param string $cert 解密的公钥证书路径
+     * @return mixed
+     */
+
+    public static function call($url, $params, $cert)
+    {
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('POST', $url, [
+            'form_params' => $params,
+        ]);
+        $PostString = (string)$res->getBody();
+
+        if (empty($PostString)) {
+            throw new \Exception("返回异常！");
+        }
+        $RPostString = Security\RSA::decryptByCERFile($PostString, $cert);
+
+        return json_decode($RPostString);
+    }
+}
