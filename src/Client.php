@@ -7,11 +7,11 @@ class Client
     /**
      * @param string $url
      * @param array $params
-     * @param string $cert=NULL 解密的公钥证书路径
+     * @param string $certFilePath=NULL 解密的公钥证书路径，如果没有或文件不存在则不解密
      * @return mixed
      */
 
-    public static function call($url, $params, $cert = NULL)
+    public static function call($url, $params, $certFilePath = NULL)
     {
         $client = new \GuzzleHttp\Client();
         $res = $client->request('POST', $url, [
@@ -22,8 +22,8 @@ class Client
         if (empty($PostString)) {
             throw new \Exception("返回异常！");
         }
-        if ($cert && is_file($cert)) {
-            $PostString = Security\RSA::decryptByCERFile($PostString, $cert);
+        if ($certFilePath && is_file($certFilePath)) {
+            $PostString = Security\RSA::decryptByCERFile($PostString, $certFilePath);
         }
 
         return json_decode($PostString);

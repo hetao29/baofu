@@ -1,9 +1,8 @@
 <?php
 
 /**
- * @Desc:
- * @author dasheng@baofu.com(大圣)
- * @datetime 2025/05/05
+ * 资质文件上传接口
+ * https://doc.mandao.com/docs/bct/bct-1gbbtmk773oah
  */
 try {
     require_once 'init.php';

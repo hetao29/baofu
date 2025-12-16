@@ -20,14 +20,14 @@ class PostMaster
 
     function __construct()
     {
-        date_default_timezone_set('Asia/Shanghai');
+        $date = new \DateTime('now', new \DateTimeZone('Asia/Shanghai'));
         $this->merId;
         $this->terId;
         $this->method;
         $this->charset = "UTF-8";
         $this->version = "1.0";
         $this->format = "json";
-        $this->timestamp = date('YmdHis');
+        $this->timestamp = $date->format('YmdHis');
         $this->signType = "RSA";
         $this->signSn = "1";
         $this->ncrptnSn = "1";

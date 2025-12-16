@@ -2,6 +2,7 @@
 
 /**
  * 订单查询接口
+ * https://doc.mandao.com/docs/bct/bct-1f9qm13po92jq
  */
 
 require_once 'init.php';

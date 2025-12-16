@@ -2,8 +2,10 @@
 
 /**
  * 统一下单交易创建
+ * https://doc.mandao.com/docs/bct/bct-1f9qlvjef634j
  */
 require_once 'init.php';
+
 
 Baofu\Util\Log::EchoFormat("==========================");
 Baofu\Util\Log::EchoFormat("统一下单交易创建 测试实例");
@@ -16,7 +18,6 @@ $terId = $GLOBALS["Terminal_Id"];
 $Method = "unified_order";
 $txnTime = Baofu\Util\Tools::getTime(); //报文发送日期时间	
 $payCode = "WECHAT_JSAPI"; //"WECHAT_JSAPI";
-
 $subMchId = ""; //测试不用传
 
 ///微信支付参数。
@@ -44,7 +45,6 @@ $Biz_Content["prodType"] = "ORDINARY"; //SHARING:分账产品,ORDINARY:普通产
 $Biz_Content["payCode"] = $payCode;
 
 $Pay_Extend = array();
-
 
 if (substr($payCode, 0, strlen("WECHAT")) == "WECHAT") {
     ///微信支付属性-公共属性

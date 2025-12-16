@@ -7,8 +7,8 @@ class Tools
 
     /**
      * 生成订单号
-     * @param string $header
-     * @return type
+     * @param string $header=""
+     * @return string
      */
     public static function getTransid($header = "")
     {
@@ -18,7 +18,7 @@ class Tools
 
     /**
      * 时间戳
-     * @return type
+     * @return string
      */
     public static function getStamp()
     {
@@ -27,7 +27,7 @@ class Tools
 
     /**
      * 订单号流水号生成
-     * @param $header
+     * @param $header=""
      * @return string
      */
     public static function getTsnOderid($header = "")
@@ -37,25 +37,26 @@ class Tools
 
     /**
      * 生成四位随机数
-     * @return type
+     * @return int
      */
     public static function getRand4()
     {
         return rand(1000, 9999);
     }
     /**
-     * 生成四位随机数
-     * @return type
+     * 获取当前时间
+     * @return string
      */
     public static function getTime($datef = "Y-m-d H:i:s")
     {
-        return date($datef, time());
+        $date = new \DateTime('now', new \DateTimeZone('Asia/Shanghai'));
+        return $date->format($datef);
     }
 
     /**
      * 排序输出k=v&k1=v1.....格式
-     * @param type $DArray
-     * @return type
+     * @param array $DArray
+     * @return string
      */
     public static function SortAndOutString($DArray)
     {
@@ -88,7 +89,7 @@ class Tools
      * 删除数组元素
      * @param array $data
      * @param string $key
-     * @return string
+     * @return array
      */
     public static function array_remove($data, $key)
     {
