@@ -20,6 +20,7 @@ class PostMaster
 
     function __construct()
     {
+        date_default_timezone_set('Asia/Shanghai');
         $this->merId;
         $this->terId;
         $this->method;
